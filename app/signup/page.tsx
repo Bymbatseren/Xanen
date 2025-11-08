@@ -131,7 +131,7 @@ export default function SignupPage() {
         <p className="text-sm text-center text-gray-400 mt-4">
           Бүртгэлтэй юу?{" "}
           <a
-            href="/signin"
+            href="/"
             className="text-purple-400 hover:text-purple-300 cursor-pointer"
           >
             Нэвтрэх
