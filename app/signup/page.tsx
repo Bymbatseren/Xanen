@@ -24,7 +24,7 @@ export default function SignupPage() {
     }
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
-      setError("Зөв и-мэйл хаяг оруулна уу");
+      setError("Зөв э-мэйл хаяг оруулна уу");
       return false;
     }
 
@@ -74,7 +74,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center px-4">
-      <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl shadow-2xl p-8 max-w-md w-full border border-gray-700">
+      <div className="bg-black backdrop-blur-lg rounded-2xl shadow-2xl p-8 max-w-md w-full border border-black">
         {pagination === 1 ? (
           <div>
           <h2 className="text-3xl font-bold  text-white mb-6">
@@ -95,7 +95,7 @@ export default function SignupPage() {
 
           <input
             type="email"
-            placeholder="И-мэйл"
+            placeholder="Э-мэйл"
             className="w-full p-3 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:border-purple-400"
             value={formData.email}
             onChange={(e) =>

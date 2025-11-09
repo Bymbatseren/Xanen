@@ -59,9 +59,23 @@ const UserSchema = new Schema({
         maxLength:200,
         default:""
     },
+    resetPasswordOtp:{
+        type:String,
+    },
+    resetPasswordExpires:{
+        type:Date,
+
+    },
     createdAt:{
         type:Date,
         default: Date.now,
+    },
+    otp:{
+        type:String,
+
+    },
+    otpExpires:{
+        type:Date,
     },
     lastLogin:{
         type:Date,

@@ -8,13 +8,13 @@ export async function GET(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
-    return NextResponse.redirect("/signin");
+    return NextResponse.json({ authenticated: false }, { status: 401 });
   }
 
   try {
-    jwt.verify(token, JWT_SECRET);
-    return NextResponse.json({ ok: true });
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return NextResponse.json({ authenticated: true, user: decoded });
   } catch {
-    return NextResponse.redirect("/signin");
+    return NextResponse.json({ authenticated: false }, { status: 401 });
   }
 }
