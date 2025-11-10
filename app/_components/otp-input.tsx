@@ -71,7 +71,7 @@ export function OTPInputGroup({ length = 6, onChange, className = "" }: OTPInput
           onChange={(e) => handleChange(e, i)}
           onKeyDown={(e) => handleKeyDown(e, i)}
           aria-label={`OTP digit ${i + 1}`}
-          className="w-12 h-12 rounded-lg border text-center text-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-purple-500"
+          className="w-12 h-12 rounded-lg bg-gray-700/70 border text-center text-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-purple-500"
         />
       ))}
     </div>

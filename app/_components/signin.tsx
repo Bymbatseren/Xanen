@@ -73,7 +73,7 @@ export default function SigninForm(){
             <input
               type="email"
               placeholder="Э-мэйл"
-              className="w-full p-3 rounded-lg bg-black text-white border border-gray-600 focus:outline-none focus:border-purple-400"
+              className="w-full p-3 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:border-purple-400"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -84,7 +84,7 @@ export default function SigninForm(){
             <input
               type="password"
               placeholder="Нууц үг"
-              className="w-full p-3 rounded-lg bg-black text-white border border-gray-600 focus:outline-none focus:border-purple-400"
+              className="w-full p-3 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:border-purple-400"
               value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
@@ -98,7 +98,7 @@ export default function SigninForm(){
               <button
                 type="button"
                 onClick={handleForgetPassword}
-                className="text-xs sm:text-sm cursor-pointer hover:text-purple-300 transition duration-300"
+                className="text-xs sm:text-sm text-gray-400 cursor-pointer hover:text-purple-300 transition duration-300"
               >
                 Нууц үг мартсан уу?
               </button>

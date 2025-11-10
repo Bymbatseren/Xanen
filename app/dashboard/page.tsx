@@ -1,28 +1,22 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Particles from "../_components/particles";
+import Posts from "./_components/posts";
+import Header from "./_components/header";
 
 export default function DashboardPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
-  const handleLogout = async () => {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-    router.replace("/");
-  };
-
   useEffect(() => {
     (async () => {
       try {
-        
         const res = await fetch("/dashboard/proxy", { credentials: "include" });
         const data = await res.json();
 
         if (!data.authenticated) {
-          router.replace("/"); 
+          router.replace("/");
         } else {
           setLoading(false);
         }
@@ -32,15 +26,19 @@ export default function DashboardPage() {
     })();
   }, [router]);
 
-  if (loading) return <div className="text-white text-center p-10">Түр хүлээнэ үү...</div>;
+  if (loading)
+    return <div className="text-white text-center p-10">Түр хүлээнэ үү...</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl">Welcome to your Dashboard</h1>
-      <p>You are successfully authenticated 🎉</p>
-      <button onClick={handleLogout} className="mt-4 px-4 py-2 bg-red-600 text-white rounded">
-        Logout
-      </button>
+    <div className="relative min-h-screen w-full bg-[#1c1c1d] text-white overflow-hidden flex justify-center items-center">
+ 
+      <div className="absolute inset-0 z-0">
+        <Particles />
+      </div>
+     <Header/>
+    <Posts/>
+      
     </div>
   );
 }
+

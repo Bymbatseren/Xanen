@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import SigninPage from "./_components/main";
+import GooeyLoader from "./_components/loading";
 
 export default function Page() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Page() {
     })();
   }, [router]);
 
-  if (loading) return <div className="text-white text-center p-10">Түр хүлээнэ үү...</div>;
+  if (loading) return <div className="text-white text-center p-10"><GooeyLoader/></div>;
 
   return <SigninPage />;
 }

@@ -3,11 +3,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { OTPInputGroup } from "../../_components/otp-input";
+import { AiTwotoneEye } from "react-icons/ai";
+import { AiTwotoneEyeInvisible } from "react-icons/ai";
 
 export default function ForgetPasswordForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({ email: "" });
   const [otp, setOtp] = useState("");
+  const [showPassword, setShowPassword] = useState(false); 
   const [resetToken, setResetToken] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -139,7 +142,7 @@ export default function ForgetPasswordForm() {
             <input
               type="email"
               placeholder="Э-мэйл"
-              className="w-full p-3 rounded-lg bg-black text-white border border-gray-600 focus:outline-none focus:border-purple-400"
+              className="w-full p-3 rounded-lg bg-gray-700/70  text-white border border-gray-600 focus:outline-none focus:border-purple-400"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -188,34 +191,56 @@ export default function ForgetPasswordForm() {
           <h3 className="text-sm text-[#DCDDDE] mb-4">
             Шинэ нууц үгээ тохируулна уу
           </h3>
-          <form onSubmit={handlePasswordReset} className="space-y-4">
-            <input
-              type="password"
-              placeholder="Шинэ нууц үг"
-              className="w-full p-3 rounded-lg bg-black text-white border border-gray-600 focus:outline-none focus:border-purple-400"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Нууц үг давтах"
-              className="w-full p-3 rounded-lg bg-black text-white border border-gray-600 focus:outline-none focus:border-purple-400"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-            {error && <p className="text-red-400 text-sm">{error}</p>}
-            <button
-              type="submit"
-              className={`w-full bg-purple-600 hover:bg-purple-500 text-white py-2 rounded-lg font-semibold shadow-lg transition duration-300 ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              disabled={loading}
-            >
-              {loading ? "Шинэчилж байна..." : "Нууц үг шинэчлэх"}
-            </button>
-          </form>
+          <form onSubmit={handlePasswordReset} className="space-y-4 relative">
+      <div className="relative">
+        <input
+          type={showPassword ? "text" : "password"} 
+          placeholder="Шинэ нууц үг"
+          className="w-full p-3 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:border-purple-400"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      
+        <button
+          type="button"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <AiTwotoneEyeInvisible /> : <AiTwotoneEye />}
+        </button>
+      </div>
+
+      <div className="relative">
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Нууц үг давтах"
+          className="w-full p-3 rounded-lg bg-gray-700/70 text-white border border-gray-600 focus:outline-none focus:border-purple-400"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <button
+          type="button"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ?  <AiTwotoneEyeInvisible />: <AiTwotoneEye />}
+        </button>
+      </div>
+
+      {error && <p className="text-red-400 text-sm">{error}</p>}
+
+      <button
+        type="submit"
+        className={`w-full bg-purple-600 hover:bg-purple-500 text-white py-2 rounded-lg font-semibold shadow-lg transition duration-300 ${
+          loading ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        disabled={loading}
+      >
+        {loading ? "Шинэчилж байна..." : "Нууц үг шинэчлэх"}
+      </button>
+    </form>
         </>
       )}
 
