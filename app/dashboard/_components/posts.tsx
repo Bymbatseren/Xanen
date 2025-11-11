@@ -4,14 +4,10 @@ import { useEffect, useRef, useState } from "react";
 export default function Posts() {
     const [feedData, setFeedData] = useState<any[]>([]);
     const feedRef = useRef<HTMLDivElement>(null);
-
-    // Scroll physics
     const targetScroll = useRef(0);
     const currentScroll = useRef(0);
     const velocity = useRef(0);
     const rafId = useRef<number | null>(null);
-
-    // === МОНГОЛ КОНТЕНТ ГЕНЕРАТОР ===
     const mongolianContents = [
         "Улаанбаатарт өнөөдөр цас орлоо. Гудамж бүр цагаан хивс тавьчихсан шиг гоё байна!",
         "Монголчууд бид яагаад адилхан хувцас өмсдөг вэ? Уламжлал уу, эсвэл тренд үү?",
@@ -52,8 +48,6 @@ export default function Posts() {
         const data = Array.from({ length: 15 }, (_, i) => generatePost(i));
         setFeedData(data);
     }, []);
-
-    // === SCROLL PHYSICS ===
     useEffect(() => {
         const feed = feedRef.current;
         if (!feed) return;
@@ -92,7 +86,7 @@ export default function Posts() {
             <div className="pt-10 pb-10">
                 <div
                     ref={feedRef}
-                    className="relative z-10 w-full max-w-2xl mx-auto h-screen overflow-y-auto bg-[#0f0f0f] rounded-md px-4 py-6 space-y-4 feed-scroll"
+                    className="relative z-10 w-full max-w-2xl mx-auto h-screen overflow-y-auto bg-[#0f0f0f]  rounded-md px-4 py-6 space-y-4 feed-scroll"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                     {feedData.length === 0 ? (

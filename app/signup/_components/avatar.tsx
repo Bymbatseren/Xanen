@@ -54,7 +54,6 @@ export default function Avatar({ id }: { id: string }) {
       });
 
       if (res.ok) {
-        // JWT cookie аль хэдийн хадгалагдсан тул шууд homepage руу
         router.push("/");
       } else {
         const json = await res.json();

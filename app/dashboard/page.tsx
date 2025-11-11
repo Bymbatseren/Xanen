@@ -30,15 +30,7 @@ export default function DashboardPage() {
     return <div className="text-white text-center p-10">Түр хүлээнэ үү...</div>;
 
   return (
-    <div className="relative min-h-screen w-full bg-[#1c1c1d] text-white overflow-hidden flex justify-center items-center">
- 
-      <div className="absolute inset-0 z-0">
-        <Particles />
-      </div>
-     <Header/>
     <Posts/>
-      
-    </div>
   );
 }
 
