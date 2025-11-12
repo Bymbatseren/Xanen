@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { DialogDemo } from "./create-post";
 
 export default function Posts() {
     const [feedData, setFeedData] = useState<any[]>([]);
@@ -86,9 +87,23 @@ export default function Posts() {
             <div className="pt-10 pb-10">
                 <div
                     ref={feedRef}
-                    className="relative z-10 w-full max-w-2xl mx-auto h-screen overflow-y-auto bg-[#0f0f0f]  rounded-md px-4 py-6 space-y-4 feed-scroll"
+                    className="relative z-10 w-full max-w-2xl mx-auto h-screen overflow-y-auto bg-[#0f0f0f]  rounded-md md:px-4 py-6 space-y-4 feed-scroll"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
+                    <div className="flex bg-[#1a1a1a] rounded-lg  gap-5 items-center p-4">
+                        <div className="w-11 h-11 rounded-full bg-linear-to-tr from-cyan-500 to-purple-600 p-0.5  shrink-0">
+                            <img
+                                src="/logo.png"
+                                className="w-full h-full rounded-full bg-[#1a1a1a] object-cover"
+                                alt="logo"
+                            />
+                        </div>
+
+                        <div className="flex-1">
+                          
+                            <DialogDemo/>
+                        </div>
+                    </div>
                     {feedData.length === 0 ? (
                         <div className="text-center text-gray-500 py-10">Ачаалж байна...</div>
                     ) : (
@@ -100,7 +115,7 @@ export default function Posts() {
 
                                 <div className="flex items-center justify-between p-3">
                                     <div className="flex items-center space-x-3">
-                                        <div className="w-11 h-11 rounded-full bg-linear-to-tr from-cyan-500 to-blue-600 p-0.5">
+                                        <div className="w-11 h-11 rounded-full bg-linear-to-tr from-cyan-500 to-purple-600 p-0.5">
                                             <div className="w-full h-full rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold text-sm">
                                                 {post.user[0]}
                                             </div>

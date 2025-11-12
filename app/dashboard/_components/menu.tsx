@@ -14,7 +14,7 @@ const navigation = [
   { name: 'Explore', href: '#', icon: Search, current: false },
   { name: 'Notifications', href: '#', icon: Bell, current: false },
   { name: 'Messages', href: '#', icon: Mail, current: false },
-  { name: 'Bookmarks', href: '#', icon: Bookmark, current: false },
+  { name: 'Saved', href: '#', icon: Bookmark, current: false },
   { name: 'Profile', href: '#', icon: User, current: false },
   { name: 'More', href: '#', icon: MoreHorizontal, current: false },
 ];
