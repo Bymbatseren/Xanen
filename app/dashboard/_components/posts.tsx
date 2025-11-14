@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { DialogDemo } from "./create-post";
+import { CreatePostDialog } from "./create-post";
 
 export default function Posts() {
     const [feedData, setFeedData] = useState<any[]>([]);
@@ -83,8 +83,10 @@ export default function Posts() {
 
     return (
         <>
+        
 
-            <div className="pt-10 pb-10">
+            <div>
+                
                 <div
                     ref={feedRef}
                     className="relative z-10 w-full max-w-2xl mx-auto h-screen overflow-y-auto bg-[#0f0f0f]  rounded-md md:px-4 py-6 space-y-4 feed-scroll"
@@ -101,7 +103,7 @@ export default function Posts() {
 
                         <div className="flex-1">
                           
-                            <DialogDemo/>
+                            <CreatePostDialog/>
                         </div>
                     </div>
                     {feedData.length === 0 ? (

@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Particles from "../_components/particles";
 import Posts from "./_components/posts";
-import Header from "./_components/header";
+
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -30,7 +29,11 @@ export default function DashboardPage() {
     return <div className="text-white text-center p-10">Түр хүлээнэ үү...</div>;
 
   return (
+    <>
     <Posts/>
+    
+    </>
+    
   );
 }
 

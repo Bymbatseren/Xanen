@@ -32,7 +32,6 @@ export default function RootLayout({
       <div className="absolute inset-0 z-0">
         <ClientParticlesWrapper />
       </div>
-      <Header />
         <XMenu/>
         {children}
       

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import validate from "@/app/_components/functions";
 
 export default function Avatar({ id }: { id: string }) {
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -10,14 +11,7 @@ export default function Avatar({ id }: { id: string }) {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const validate = () => {
-    const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-    if (formData.phone && !phoneRegex.test(formData.phone)) {
-      setError("Зөв утасны дугаар оруулна уу.");
-      return false;
-    }
-    return true;
-  };
+
 
   const handleUpload = async (input: HTMLInputElement) => {
     if (!input.files || input.files.length === 0) return;
@@ -41,7 +35,7 @@ export default function Avatar({ id }: { id: string }) {
 
   const handleSubmit = async () => {
     setError("");
-    if (!validate()) return;
+    if (!validate(formData.phone,setError)) return;
     setIsLoading(true);
 
     try {
