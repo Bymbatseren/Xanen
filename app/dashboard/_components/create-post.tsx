@@ -29,8 +29,6 @@ import {
 } from "@dnd-kit/sortable";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-
-// === DYNAMIC IMPORTS (Сервер дээр ачаалахгүй!) ===
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
   { ssr: false }
@@ -441,7 +439,7 @@ const handleDrop = async (e: React.DragEvent) => {
 
   {images.length > 0 && (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={images.map((i) => i.id)} strategy={verticalListSortingStrategy}>
+      <SortableContext items={images.map((i:any) => i.id)} strategy={verticalListSortingStrategy}>
         <div className="grid grid-cols-3 gap-2">
           {images.map((img:any) => (
             <SortableImage key={img.id} id={img.id} src={img.src} onRemove={() => removeImage(img.id)} />
